@@ -86,8 +86,8 @@ namespace C_.异步编程_信号量
         public async void Start()
         {
             Console.WriteLine("线程中 " + Thread.CurrentThread.ManagedThreadId);
-            var dualProducerConsumer = new DualProducerConsumer();
-            var cts = new CancellationTokenSource();
+            DualProducerConsumer? dualProducerConsumer = new DualProducerConsumer();
+            CancellationTokenSource? cts = new CancellationTokenSource();
             Console.WriteLine("线程中 " + Thread.CurrentThread.ManagedThreadId);
             // 启动消费者任务
             var consumerTask = dualProducerConsumer.ConsumeAndCombineAsync(cts.Token);
