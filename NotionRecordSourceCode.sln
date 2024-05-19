@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.ComponentBindingEnum", "WPF.ComponentBindingEnum\WPF.ComponentBindingEnum.csproj", "{C5097F31-0A28-431E-95B8-E63B253F80A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.ComponentBindingEnum", "WPF.ComponentBindingEnum\WPF.ComponentBindingEnum.csproj", "{C5097F31-0A28-431E-95B8-E63B253F80A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.异步编程_Async_Await", "C#.异步编程_Async_Await\C#.异步编程_Async_Await.csproj", "{B4AE4D1F-1D49-4CAE-8613-1294D00D7056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.异步编程_Async_Await_Demo_AsynBreakFast", "C#.异步编程_Async_Await_Demo_AsynBreakFast\C#.异步编程_Async_Await_Demo_AsynBreakFast.csproj", "{1ED944F5-7BCC-4D36-89DD-E90A7CC779E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.异步编程_信号量", "C#.异步编程_信号量\C#.异步编程_信号量.csproj", "{A6E0CD8A-9C22-4B3F-82FB-3167F849D1EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{C5097F31-0A28-431E-95B8-E63B253F80A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5097F31-0A28-431E-95B8-E63B253F80A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5097F31-0A28-431E-95B8-E63B253F80A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4AE4D1F-1D49-4CAE-8613-1294D00D7056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4AE4D1F-1D49-4CAE-8613-1294D00D7056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4AE4D1F-1D49-4CAE-8613-1294D00D7056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4AE4D1F-1D49-4CAE-8613-1294D00D7056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED944F5-7BCC-4D36-89DD-E90A7CC779E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED944F5-7BCC-4D36-89DD-E90A7CC779E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED944F5-7BCC-4D36-89DD-E90A7CC779E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED944F5-7BCC-4D36-89DD-E90A7CC779E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E0CD8A-9C22-4B3F-82FB-3167F849D1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E0CD8A-9C22-4B3F-82FB-3167F849D1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E0CD8A-9C22-4B3F-82FB-3167F849D1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E0CD8A-9C22-4B3F-82FB-3167F849D1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
