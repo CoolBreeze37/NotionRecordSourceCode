@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C#.异步编程_原生异�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.异步编程_Parallel大批量文件创建", "C#.异步编程_Parallel大批量文件创建\C#.异步编程_Parallel大批量文件创建.csproj", "{E8ABB68C-CDA9-45C0-93A6-B3E6DB516F7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm.一个本地化的程序", "WinForm.一个本地化的程序\WinForm.一个本地化的程序.csproj", "{C6AC969E-4976-4E15-B2CC-64756EA52B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.CSV去科学计数导出", "C#.CSV去科学计数导出\C#.CSV去科学计数导出.csproj", "{AB82E8CD-30DD-4A56-9AA8-F73022F3F3C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm.分页", "WinForm.分页\WinForm.分页.csproj", "{71957369-9322-41A0-9A1A-5C50E3A9DF34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{E8ABB68C-CDA9-45C0-93A6-B3E6DB516F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8ABB68C-CDA9-45C0-93A6-B3E6DB516F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8ABB68C-CDA9-45C0-93A6-B3E6DB516F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6AC969E-4976-4E15-B2CC-64756EA52B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6AC969E-4976-4E15-B2CC-64756EA52B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6AC969E-4976-4E15-B2CC-64756EA52B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6AC969E-4976-4E15-B2CC-64756EA52B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB82E8CD-30DD-4A56-9AA8-F73022F3F3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB82E8CD-30DD-4A56-9AA8-F73022F3F3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB82E8CD-30DD-4A56-9AA8-F73022F3F3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB82E8CD-30DD-4A56-9AA8-F73022F3F3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71957369-9322-41A0-9A1A-5C50E3A9DF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71957369-9322-41A0-9A1A-5C50E3A9DF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71957369-9322-41A0-9A1A-5C50E3A9DF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71957369-9322-41A0-9A1A-5C50E3A9DF34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
