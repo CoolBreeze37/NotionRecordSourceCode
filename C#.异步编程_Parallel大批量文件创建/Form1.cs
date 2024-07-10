@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Pdf;
+using Aspose.Pdf.Facades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,13 +8,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace C_.异步编程_Parallel大批量文件创建
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         public Form1()
         {
@@ -215,7 +220,8 @@ namespace C_.异步编程_Parallel大批量文件创建
             };
                 string pdfFilePath = "D:\\Work\\RFID\\Encopro-SML2019\\RFID写码\\bin\\Debug\\DataParameter\\8105D738864-48935077\\DH_8105D738864_48935077_HMHMM9V0BX001_HMHMM9V0BX_3_S_NOPLATE.pdf";
                 PdfCase pdfCase = new PdfCase("8105D738864", pdfFilePath, pdfSKUPackages);
-                bool res = pdfCase.SplitAsSKU();
+                CancellationTokenSource cts = new CancellationTokenSource();
+                int res = pdfCase.SplitBySKU(cts.Token);
                 List<string> selectedSKUList = new List<string>
             {
                 "200024361872",
@@ -246,11 +252,189 @@ namespace C_.异步编程_Parallel大批量文件创建
             };
                 pdfCase.UpdateSelectedSKUCollection(selectedSKUList);
                 string mpath;
-                if (res)
-                    _ = pdfCase.ConcatenateSelectedPdfSKUs(out mpath);
+                if (res == 0)
+                    _ = pdfCase.ConcatenateSelectedPdfSKUs(out mpath, false, Rotation.None);
             });
             
 
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var dt = GetDataTableFromCSV("D:\\Desktop\\RFID_Data\\PdftoPngTest\\8105D738864-48935077\\8105D738864-48935077.csv");
+            string pdfFilePath = "D:\\Desktop\\RFID_Data\\PdftoPngTest\\8105D738864-48935077\\DH_8105D738864_48935077_HMHMM9V0BX001_HMHMM9V0BX_3_S_NOPLATE.pdf";
+            PdfHelper.iText7_RotatePdftoTargetAngle("8105D738864-48935077", pdfFilePath, out string targetpdfFilePath, 90);
+            var pdfCase = GetPdfCase("8105D738864-48935077", pdfFilePath, dt);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            int res = pdfCase.SplitBySKU(cts.Token);
+            List<string> selectedSKUList = new List<string>
+            {
+                "200024361872",
+                "200024361873",
+                "200024361874",
+                "200024361875",
+                "200024361876",
+                "200024361877",
+                "200024361878",
+                "200024361879",
+                "200024361880",
+                "200024361881",
+                "200024361882",
+                "200024361883",
+                "200024361884",
+                "200024361885",
+                "200024361886",
+                "200024361887",
+                "200024361888",
+                "200024361889",
+                "200024361890",
+                "200024361891",
+                "200024361892",
+                "200024361893",
+                "200024361894",
+                "200024361895",
+                "200024361896"
+            };
+
+            if (res==0)
+            {
+                 pdfCase.UpdateSelectedSKUCollection(selectedSKUList);
+                _ = pdfCase.ConcatenateSelectedPdfSKUs(out string mpath,false,Rotation.None);
+                Console.WriteLine(mpath);
+            }
+
+
+        }
+        
+        private PdfCase GetPdfCase(string caseName,string pdfFilePath,DataTable dt)
+        {
+            var dic = GroupBySKU(dt);
+            List<PdfSKUPackage> pdfSKUPackages = new List<PdfSKUPackage>();
+            foreach (var kp in dic)
+            {
+                int startPage = Convert.ToInt32(kp.Value.Min(x => Convert.ToInt32(x.PAGE_NUMBER)));
+                int endPage = Convert.ToInt32(kp.Value.Max(x => Convert.ToInt32(x.PAGE_NUMBER)));
+                pdfSKUPackages.Add(new PdfSKUPackage(kp.Key, startPage, endPage));
+            }
+            PdfCase pdfCase = new PdfCase(caseName, pdfFilePath,pdfSKUPackages);
+            return pdfCase;
+        }
+        private Dictionary<string, List<Data>> GroupBySKU(DataTable dataTable)
+        {
+            // 使用LINQ按SKU分组，并选择所需列
+            var groupedData = from row in dataTable.AsEnumerable()
+                              group row by row.Field<string>("SKU") into skuGroup
+                              select new
+                              {
+                                  SKU = skuGroup.Key,
+                                  Items = skuGroup.Select(r => new Data
+                                  {
+                                      SKU = r.Field<string>("SKU"),
+                                      RESULT = r.Field<Int16>("RESULT"),
+                                      PAGE_NUMBER = r.Field<string>("PAGE_NUMBER"),
+                                      SORTING_SEQ = r.Field<string>("SORTING_SEQ")
+                                  }).ToList()
+                              };
+
+            // 创建字典，其中键是SKU，值是List<Data>
+            Dictionary<string, List<Data>> dataDictionary = groupedData.ToDictionary(g => g.SKU, g => g.Items);
+            return dataDictionary;
+        }
+
+        public DataTable GetDataTableFromCSV(string path)
+        {
+            DataTable dataTable = new DataTable();
+            List<string> columns;
+            using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            // 填充数据到DataTable
+            using (var reader = new StreamReader(fileStream))
+            {
+                var line = reader.ReadLine();
+                columns = line.Split(',').ToList();
+                foreach (string column in columns)
+                {
+                    if (column.Equals("RESULT"))
+                        dataTable.Columns.Add(column, typeof(Int16));
+                    else
+                        dataTable.Columns.Add(column, typeof(string));
+                }
+                while (!reader.EndOfStream)
+                {
+                    string dataLine = reader.ReadLine();
+                    string[] values = dataLine.Split(',');
+                    dataTable.Rows.Add(values);
+                }
+            }
+            return dataTable;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                Thread.Sleep(5);
+                textBox1.Text = $"{i}";
+            }
+         
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+
+            // Start a task to cancel the operation after a delay
+            Task.Run(() =>
+            {
+                Thread.Sleep(2000); // Adjust the delay as needed
+                cts.Cancel();
+            });
+
+            try
+            {
+                Parallel.For(0, 100, new ParallelOptions { CancellationToken = token }, (i, state) =>
+                {
+                    string filePath = $"file{i}.txt";
+                    StreamWriter writer = null;
+
+                    try
+                    {
+                        writer = new StreamWriter(filePath);
+                        writer.WriteLine($"Writing to file {i}");
+
+                        // Simulate some work
+                        Thread.Sleep(500);
+
+                        // Check for cancellation
+                        token.ThrowIfCancellationRequested();
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Console.WriteLine($"Operation cancelled at iteration {i}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Exception at iteration {i}: {ex.Message}");
+                    }
+                    finally
+                    {
+                        writer?.Dispose(); // Ensure the file is closed and the resource is released
+                    }
+                });
+            }
+            catch (OperationCanceledException)
+            {
+                Console.WriteLine("Parallel.For operation was cancelled.");
+            }
+
+            Console.WriteLine("Completed");
+        }
+    }
+    public class Data
+    {
+        public string SKU { get; set; }
+        public Int16 RESULT { get; set; }
+        public string PAGE_NUMBER { get; set; }
+        public string SORTING_SEQ { get; set; }
     }
 }
