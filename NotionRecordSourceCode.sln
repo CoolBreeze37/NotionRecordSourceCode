@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm.分页", "WinForm.�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExpress.WPF.DataGrid", "DevExpress.WPF.DataGrid\DevExpress.WPF.DataGrid.csproj", "{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#.FileSystem", "C#.FileSystem\C#.FileSystem.csproj", "{9BC050A9-B942-44A1-B2B1-795EBD677C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC050A9-B942-44A1-B2B1-795EBD677C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC050A9-B942-44A1-B2B1-795EBD677C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC050A9-B942-44A1-B2B1-795EBD677C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC050A9-B942-44A1-B2B1-795EBD677C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
