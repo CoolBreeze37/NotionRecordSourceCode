@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm.分页", "WinForm.�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExpress.WPF.DataGrid", "DevExpress.WPF.DataGrid\DevExpress.WPF.DataGrid.csproj", "{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Sender", "RabbitMQ.Sender\RabbitMQ.Sender.csproj", "{FAA1A1F2-5609-4B1E-8966-FB35122521E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Receiver", "RabbitMQ.Receiver\RabbitMQ.Receiver.csproj", "{AE018324-2CAD-47B6-9C16-4CFBAEEEC9CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE6A5A5-31D0-46BC-8C7C-734DF60C20F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA1A1F2-5609-4B1E-8966-FB35122521E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA1A1F2-5609-4B1E-8966-FB35122521E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA1A1F2-5609-4B1E-8966-FB35122521E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA1A1F2-5609-4B1E-8966-FB35122521E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE018324-2CAD-47B6-9C16-4CFBAEEEC9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE018324-2CAD-47B6-9C16-4CFBAEEEC9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE018324-2CAD-47B6-9C16-4CFBAEEEC9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE018324-2CAD-47B6-9C16-4CFBAEEEC9CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
